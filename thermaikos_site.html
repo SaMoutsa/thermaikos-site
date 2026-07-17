@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Θερμαϊκός — Εστιατόριο Θαλασσινών &amp; Μεζέδων, Θεσσαλονίκη</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Literata:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --teal-deep:#0D2B2E;
+  --teal-navy:#163B45;
+  --gold:#C9973E;
+  --rust:#B5502E;
+  --cream:#F3ECDD;
+  --ink:#1E1B16;
+  --cream-dim:#E3D9C2;
+  --teal-line: rgba(201,151,62,0.25);
+  --serif-display:'Cormorant', serif;
+  --serif-body:'Literata', serif;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+@media (prefers-reduced-motion: reduce){
+  html{scroll-behavior:auto;}
+  *{animation-duration:0.01ms !important; animation-iteration-count:1 !important; transition-duration:0.01ms !important;}
+}
+body{
+  font-family:var(--serif-body);
+  background:var(--teal-deep);
+  color:var(--cream);
+  line-height:1.6;
+  overflow-x:hidden;
+}
+a{color:inherit; text-decoration:none;}
+h1,h2,h3{font-family:var(--serif-display); font-weight:600; letter-spacing:0.01em;}
+.eyebrow{
+  font-family:var(--serif-body);
+  font-style:italic;
+  font-size:0.82rem;
+  letter-spacing:0.18em;
+  text-transform:uppercase;
+  color:var(--gold);
+  display:block;
+  margin-bottom:0.9rem;
+}
+.wrap{max-width:1140px; margin:0 auto; padding:0 6vw;}
+
+/* ---------- NAV ---------- */
+header{
+  position:fixed; top:0; left:0; right:0; z-index:100;
+  padding:1.1rem 6vw;
+  display:flex; align-items:center; justify-content:space-between;
+  background:transparent;
+  transition:background 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
+}
+header.solid{
+  background:rgba(13,43,46,0.94);
+  padding:0.75rem 6vw;
+  box-shadow:0 6px 24px rgba(0,0,0,0.25);
+  backdrop-filter: blur(6px);
+}
+.logo{
+  font-family:var(--serif-display);
+  font-size:1.5rem;
+  font-weight:700;
+  letter-spacing:0.03em;
+  color:var(--cream);
+}
+.logo span{color:var(--gold);}
+.header-right{display:flex; align-items:center; gap:1.8rem;}
+.lang-switch{display:flex; align-items:center; gap:0.35rem;}
+.lang-btn{
+  font-family:var(--serif-body); font-size:0.76rem; letter-spacing:0.06em;
+  padding:0.32rem 0.6rem; border:1px solid var(--teal-line);
+  color:var(--cream-dim); background:transparent; cursor:pointer;
+  transition:border-color 0.25s ease, color 0.25s ease;
+}
+.lang-btn.active{border-color:var(--gold); color:var(--gold);}
+nav ul{display:flex; gap:2.4rem; list-style:none;}
+nav a{
+  font-size:0.92rem;
+  letter-spacing:0.04em;
+  padding-bottom:4px;
+  border-bottom:1px solid transparent;
+  transition:border-color 0.25s ease, color 0.25s ease;
+}
+nav a:hover, nav a.active{border-color:var(--gold); color:var(--gold);}
+.burger{display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:6px;}
+.burger span{width:26px; height:2px; background:var(--cream); display:block;}
+
+@media (max-width:820px){
+  nav{
+    position:fixed; top:0; right:-100%; height:100vh; width:72%;
+    background:var(--teal-navy); flex-direction:column;
+    padding:6.5rem 2.2rem; transition:right 0.35s ease; z-index:99;
+  }
+  nav.open{right:0;}
+  nav ul{flex-direction:column; gap:1.9rem;}
+  .burger{display:flex;}
+}
+
+/* ---------- HERO ---------- */
+.hero{
+  position:relative;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  overflow:hidden;
+  background:
+    radial-gradient(ellipse 60% 50% at 78% 28%, rgba(201,151,62,0.35), transparent 60%),
+    linear-gradient(180deg, #0A2124 0%, #0D2B2E 45%, #0F3339 100%);
+}
+.hero-content{position:relative; z-index:3; padding-top:6rem;}
+.hero h1{
+  font-size:clamp(3rem, 8vw, 6.4rem);
+  line-height:0.98;
+  color:var(--cream);
+  max-width:820px;
+}
+.hero h1 em{font-style:italic; color:var(--gold); font-weight:500;}
+.hero p.tag{
+  margin-top:1.6rem;
+  font-size:1.2rem;
+  max-width:480px;
+  color:var(--cream-dim);
+  font-style:italic;
+}
+.hero-meta{
+  margin-top:2.6rem;
+  display:flex; gap:2.6rem; flex-wrap:wrap;
+}
+.hero-meta div{font-size:0.86rem; letter-spacing:0.03em; color:var(--cream-dim);}
+.hero-meta strong{display:block; color:var(--gold); font-family:var(--serif-display); font-size:1.05rem; font-weight:600; margin-bottom:0.15rem;}
+.cta{
+  display:inline-block;
+  margin-top:2.6rem;
+  padding:0.95rem 2.3rem;
+  border:1px solid var(--gold);
+  color:var(--gold);
+  font-size:0.9rem;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  transition:background 0.3s ease, color 0.3s ease;
+}
+.cta:hover{background:var(--gold); color:var(--teal-deep);}
+
+.gulf-scene{position:absolute; inset:0; z-index:1;}
+.gulf-scene svg{position:absolute; bottom:0; left:0; width:100%; height:auto;}
+.boat{animation: drift 14s ease-in-out infinite;}
+@keyframes drift{
+  0%,100%{ transform: translateX(0) translateY(0); }
+  50%{ transform: translateX(18px) translateY(-3px); }
+}
+.shimmer{animation: shimmer 6s ease-in-out infinite;}
+@keyframes shimmer{
+  0%,100%{opacity:0.55;}
+  50%{opacity:0.9;}
+}
+
+/* ---------- WAVE DIVIDER ---------- */
+.wave-divider{display:block; width:100%; height:60px;}
+.wave-divider path{fill:var(--teal-navy);}
+.wave-divider.to-cream path{fill:var(--cream);}
+.wave-divider.to-navy path{fill:var(--teal-deep);}
+
+/* ---------- SECTION GENERIC ---------- */
+section{position:relative; padding:7.5rem 0 6rem;}
+.reveal{opacity:0; transform:translateY(26px); transition:opacity 0.8s ease, transform 0.8s ease;}
+.reveal.in{opacity:1; transform:translateY(0);}
+
+/* ---------- HISTORY ---------- */
+#history{background:var(--teal-navy);}
+.history-grid{display:grid; grid-template-columns:1fr 1.15fr; gap:5rem; align-items:start;}
+.history-grid h2{font-size:clamp(2.2rem,4vw,3.1rem); margin-bottom:1.6rem; color:var(--cream);}
+.meander{width:120px; height:14px; margin-bottom:2.2rem; opacity:0.8;}
+.history-text p{margin-bottom:1.15rem; color:var(--cream-dim); font-size:1.02rem;}
+.pull{
+  font-family:var(--serif-display);
+  font-style:italic;
+  font-size:1.7rem;
+  color:var(--gold);
+  border-left:2px solid var(--gold);
+  padding-left:1.6rem;
+  line-height:1.4;
+  margin-top:1rem;
+}
+@media (max-width:820px){ .history-grid{grid-template-columns:1fr; gap:2.5rem;} }
+
+/* ---------- MENU ---------- */
+#menu{background:var(--cream); color:var(--ink);}
+#menu .eyebrow{color:var(--rust);}
+#menu h2{color:var(--ink); font-size:clamp(2.2rem,4vw,3.1rem); margin-bottom:0.6rem;}
+.menu-intro{max-width:560px; color:#5b4f3d; margin-bottom:3.6rem; font-style:italic;}
+.menu-columns{display:grid; grid-template-columns:1fr 1fr; gap:3.4rem 4.5rem;}
+.menu-cat h3{
+  font-size:1.5rem; color:var(--rust); margin-bottom:1.3rem;
+  display:flex; align-items:center; gap:0.7rem;
+}
+.menu-cat h3 svg{width:22px; height:22px; flex-shrink:0;}
+.menu-item{
+  display:flex; align-items:baseline; gap:0.6rem;
+  margin-bottom:0.95rem;
+  font-size:1.02rem;
+}
+.menu-item .name{white-space:nowrap;}
+.menu-item .name small{display:block; font-size:0.78rem; color:#8a7d63; font-style:italic; font-weight:400;}
+.menu-item .dots{flex:1; border-bottom:1px dotted #b8a980; position:relative; top:-4px;}
+.menu-item .price{font-family:var(--serif-display); font-weight:600; color:var(--ink);}
+@media (max-width:820px){ .menu-columns{grid-template-columns:1fr; gap:2.6rem;} }
+
+/* ---------- CONTACT ---------- */
+#contact{background:var(--teal-deep);}
+.contact-grid{display:grid; grid-template-columns:1fr 1fr; gap:4.5rem;}
+.contact-grid h2{font-size:clamp(2.2rem,4vw,3.1rem); margin-bottom:1.6rem;}
+.info-row{display:flex; gap:1rem; margin-bottom:1.5rem;}
+.info-row svg{width:22px; height:22px; flex-shrink:0; margin-top:3px; color:var(--gold);}
+.info-row strong{display:block; font-family:var(--serif-display); font-size:1.05rem; color:var(--gold); margin-bottom:0.15rem;}
+.info-row p{color:var(--cream-dim); font-size:0.96rem;}
+.map-box{
+  margin-top:2rem; height:220px; border:1px solid var(--teal-line);
+  background:linear-gradient(135deg, rgba(201,151,62,0.08), rgba(201,151,62,0.02));
+  display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;
+}
+.map-box svg{width:44px; height:44px; color:var(--gold);}
+.map-box span{position:absolute; bottom:14px; left:14px; font-size:0.78rem; letter-spacing:0.05em; color:var(--cream-dim); font-style:italic;}
+
+form{display:flex; flex-direction:column; gap:1.15rem;}
+.form-row{display:flex; gap:1.15rem;}
+.form-row > div{flex:1;}
+label{display:block; font-size:0.78rem; letter-spacing:0.06em; text-transform:uppercase; color:var(--gold); margin-bottom:0.45rem;}
+input, textarea, select{
+  width:100%; background:transparent; border:none; border-bottom:1px solid var(--teal-line);
+  color:var(--cream); font-family:var(--serif-body); font-size:1rem; padding:0.55rem 0.1rem;
+  outline:none; transition:border-color 0.25s ease;
+}
+input:focus, textarea:focus, select:focus{border-color:var(--gold);}
+select option{color:#000;}
+textarea{resize:vertical; min-height:70px;}
+button.submit{
+  margin-top:0.6rem; align-self:flex-start;
+  padding:0.9rem 2.2rem; background:var(--gold); color:var(--teal-deep); border:none;
+  font-size:0.9rem; letter-spacing:0.08em; text-transform:uppercase; cursor:pointer;
+  transition:background 0.25s ease;
+}
+button.submit:hover{background:#dcae5c;}
+@media (max-width:820px){ .contact-grid{grid-template-columns:1fr; gap:3rem;} .form-row{flex-direction:column; gap:1.15rem;} }
+
+footer{
+  background:#081C1E; padding:2.4rem 0; text-align:center;
+  font-size:0.85rem; color:var(--cream-dim); letter-spacing:0.03em;
+}
+footer span{color:var(--gold);}
+
+:focus-visible{outline:2px solid var(--gold); outline-offset:3px;}
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <a class="logo" href="#top">Θερμαϊκ<span>ός</span></a>
+  <div class="header-right">
+    <div class="lang-switch" role="group" aria-label="Language">
+      <button class="lang-btn" data-lang="el">ΕΛ</button>
+      <button class="lang-btn" data-lang="en">EN</button>
+    </div>
+    <button class="burger" id="burger" data-i18n-aria="burger_aria" aria-label="Άνοιγμα μενού" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="nav">
+      <ul>
+        <li><a href="#top" class="nav-link" data-target="top" data-i18n="nav_home">Αρχική</a></li>
+        <li><a href="#history" class="nav-link" data-target="history" data-i18n="nav_history">Η Ιστορία</a></li>
+        <li><a href="#menu" class="nav-link" data-target="menu" data-i18n="nav_menu">Μενού</a></li>
+        <li><a href="#contact" class="nav-link" data-target="contact" data-i18n="nav_contact">Επικοινωνία</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="top">
+  <div class="gulf-scene" aria-hidden="true">
+    <svg viewBox="0 0 1200 500" preserveAspectRatio="none">
+      <circle class="shimmer" cx="920" cy="150" r="120" fill="#C9973E" opacity="0.18"/>
+      <path d="M0,340 Q150,320 300,340 T600,340 T900,340 T1200,340 V500 H0 Z" fill="#0F3339"/>
+      <path d="M0,365 Q150,348 300,365 T600,365 T900,365 T1200,365 V500 H0 Z" fill="#0B2A2D"/>
+      <g transform="translate(760,255)" fill="#08201F">
+        <rect x="0" y="40" width="46" height="70" rx="3"/>
+        <rect x="8" y="18" width="30" height="26" rx="2"/>
+        <rect x="14" y="4" width="18" height="18" rx="2"/>
+        <rect x="-6" y="108" width="58" height="8"/>
+      </g>
+      <g class="boat" transform="translate(230,300)" fill="#08201F">
+        <path d="M0,20 L100,20 L84,36 L16,36 Z"/>
+        <rect x="46" y="-24" width="2" height="44"/>
+        <path d="M48,-22 L48,10 L74,4 Z" fill="#0F3339"/>
+      </g>
+    </svg>
+  </div>
+
+  <div class="wrap hero-content">
+    <span class="eyebrow" data-i18n="hero_eyebrow">Θαλασσινά &amp; μεζέδες στον κόλπο</span>
+    <h1 data-i18n="hero_title">Γεύσεις που <em>κοιτάζουν</em><br>τη θάλασσα.</h1>
+    <p class="tag" data-i18n="hero_tag">Ένα τραπέζι στη Νίκης, ένα πιάτο από την αγορά του Καπάνι, μια ιστορία που κρατάει τρεις γενιές.</p>
+    <div class="hero-meta">
+      <div><strong data-i18n="meta_hours_label">Ώρες</strong><span data-i18n="meta_hours_value">Καθημερινά, 12:00–00:00</span></div>
+      <div><strong data-i18n="meta_location_label">Τοποθεσία</strong><span data-i18n="meta_location_value">Νίκης 45, Θεσσαλονίκη</span></div>
+      <div><strong data-i18n="meta_res_label">Κρατήσεις</strong><span>2310 123 456</span></div>
+    </div>
+    <a href="#contact" class="cta" data-i18n="cta_reserve">Κάντε κράτηση</a>
+  </div>
+</section>
+
+<svg class="wave-divider to-navy" viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,30 Q300,60 600,30 T1200,30 V60 H0 Z"/></svg>
+
+<!-- ================= HISTORY ================= -->
+<section id="history">
+  <div class="wrap history-grid">
+    <div class="reveal">
+      <span class="eyebrow" data-i18n="history_eyebrow">Από το 1958</span>
+      <h2 data-i18n="history_title">Η Ιστορία μας</h2>
+      <svg class="meander" viewBox="0 0 120 14"><path d="M0,7 h14 v-7 h14 v14 h14 v-7 h14 v-7 h14 v14 h14 v-7 h14 v-7 h14" stroke="#C9973E" stroke-width="2" fill="none"/></svg>
+      <p class="pull" data-i18n="pull_quote">«Το μαγαζί δεν το χτίσαμε εμείς. Το κληρονομήσαμε από τη θάλασσα και το παραδίδουμε στα παιδιά μας.»</p>
+    </div>
+    <div class="history-text reveal">
+      <p data-i18n="history_p1">Ο παππούς Μανώλης άνοιξε το πρώτο μαγαζί λίγα μέτρα από το λιμάνι, εκεί όπου οι ψαράδες έφερναν την πρωινή ψαριά κατευθείαν από τον Θερμαϊκό. Δεν υπήρχε μενού — υπήρχε ό,τι έβγαζε η θάλασσα εκείνη μέρα, και ό,τι κρατούσε η γειτονιά από τις παλιές συνήθειες: τις καπνιστές γεύσεις της αγοράς του Καπάνι, τα μπαχαρικά που είχαν φέρει οι πρόσφυγες της Μικρασίας, τις συνταγές που κυκλοφορούσαν ανάμεσα σε σεφαραδίτικες και ανατολίτικες κουζίνες σε αυτή την πολύγλωσση πόλη.</p>
+      <p data-i18n="history_p2">Στα χρόνια που ακολούθησαν, η ταβέρνα μεγάλωσε μαζί με τη Θεσσαλονίκη. Το τραπέζι μετακόμισε στη Νίκης, με θέα στον κόλπο και στο ηλιοβασίλεμα που κάνει την πόλη διάσημη, αλλά η λογική έμεινε η ίδια: λίγα υλικά, σωστά δουλεμένα, και πάντα ένα πιάτο μεζέδες στη μέση του τραπεζιού για να μοιραστεί.</p>
+      <p data-i18n="history_p3">Σήμερα την κουζίνα κρατά η τρίτη γενιά της οικογένειας. Οι συνταγές έχουν ταξιδέψει, αλλά η αρχή παραμένει: το ψάρι έρχεται από ψαράδες που ξέρουμε με το όνομά τους, το λάδι από τη Χαλκιδική, και το ψωμί ζυμώνεται κάθε πρωί, λίγο πριν ανοίξουμε τις πόρτες στη θάλασσα.</p>
+    </div>
+  </div>
+</section>
+
+<svg class="wave-divider to-cream" viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,30 Q300,0 600,30 T1200,30 V60 H0 Z"/></svg>
+
+<!-- ================= MENU ================= -->
+<section id="menu">
+  <div class="wrap">
+    <span class="eyebrow reveal" data-i18n="menu_eyebrow">Το τραπέζι</span>
+    <h2 class="reveal" data-i18n="menu_title">Μενού</h2>
+    <p class="menu-intro reveal" data-i18n="menu_intro">Ένα μενού που αλλάζει με την εποχή και την ψαριά της ημέρας — αυτά είναι τα πιάτα που θα βρείτε σχεδόν πάντα.</p>
+
+    <div class="menu-columns">
+      <div class="menu-cat reveal">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="#B5502E" stroke-width="1.6"><path d="M4 12c3-4 13-4 16 0-3 4-13 4-16 0Z"/><circle cx="15" cy="12" r="0.8" fill="#B5502E"/></svg><span data-i18n="cat_meze">Μεζέδες</span></h3>
+        <div class="menu-item"><span class="name" data-i18n="item_meze1">Μελιτζανοσαλάτα ψητή</span><span class="dots"></span><span class="price">5,50€</span></div>
+        <div class="menu-item"><span class="name" data-i18n="item_meze2">Τυροκαυτερή Θεσσαλονίκης</span><span class="dots"></span><span class="price">5,80€</span></div>
+        <div class="menu-item"><span class="name" data-i18n="item_meze3">Ταραμοσαλάτα σπιτική</span><span class="dots"></span><span class="price">5,20€</span></div>
+        <div class="menu-item"><span class="name" data-i18n="item_meze4">Κολοκυθοκεφτέδες<small>με σος γιαουρτιού</small></span><span class="dots"></span><span class="price">6,50€</span></div>
+        <div class="menu-item"><span class="name" data-i18n="item_meze5">Φέτα ψητή με μέλι &amp; σουσάμι</span><span class="dots"></span><span class="price">6,80€</span></div>
+      </div>
+
+      <div class="menu-cat reveal">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="#B5502E" stroke-width="1.6"><path d="M12 3c4 3 7 7 7 11a7 7 0 1 1-14 0c0-4 3-8 7-11Z"/></svg><span data-i18n="cat_seafood">Θαλασσινά</span></h3>
+        <div class="menu-item"><span class="name" data-i18n="item_sea1">Μύδια Θερμαϊκού σαγανάκι</span><span class="dots"></span><span class="price">9,50€</span></div>
+        <div class="menu-item"><span class="name" data-i18n="item_sea2">Χταπόδι σχάρας<small>με ξινόμηλο &amp; ρίγανη</small></span><span class="dots"></span><span class="price">15,00€</span></div>
+        <div class="menu-item"><span class="name" data-i18n="item_sea3">Γαρίδες σαγανάκι</span><span class="dots"></span><span class="price">13,50€</span></div>
+        <div class="menu-item"><span class="name" data-i18n="item_sea4">Καλαμαράκια τηγανητά</span><span class="dots"></span><span class="price">11,00€</span></div>
+        <div class="menu-item"><span class="name" data-i18n="item_sea5">Ψάρι ημέρας<small>ψητό, τιμή ανά κιλό</small></span><span class="dots"></span><span class="price">–</span></div>
+      </div>
+
+      <div class="menu-cat reveal">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="#B5502E" stroke-width="1.6"><path d="M6 21V9l6-6 6 6v12"/><path d="M10 21v-6h4v6"/></svg><span data-i18n="cat_main">Κυρίως πιάτα</span></h3>
+        <div class="menu-item"><span class="name" data-i18n="item_main1">Μπιφτέκι σχάρας<small>με πατάτες τηγανιτές</small></span><span class="dots"></span><span class="price">10,50€</span></div>
+        <div class="menu-item"><span class="name" data-i18n="item_main2">Κοντοσούβλι χοιρινό</span><span class="dots"></span><span class="price">11,80€</span></div>
+        <div class="menu-item"><span class="name" data-i18n="item_main3">Παϊδάκια αρνίσια</span><span class="dots"></span><span class="price">16,50€</span></div>
+        <div class="menu-item"><span class="name" data-i18n="item_main4">Γιουβέτσι θαλασσινών</span><span class="dots"></span><span class="price">14,00€</span></div>
+      </div>
+
+      <div class="menu-cat reveal">
+        <h3><svg viewBox="0 0 24 24" fill="none" stroke="#B5502E" stroke-width="1.6"><path d="M12 2v6M8 6l4 2 4-2M5 12h14M6 12l1 9h10l1-9"/></svg><span data-i18n="cat_dessert">Επιδόρπια &amp; Ποτά</span></h3>
+        <div class="menu-item"><span class="name" data-i18n="item_dessert1">Τρίγωνα Πανοράματος</span><span class="dots"></span><span class="price">4,50€</span></div>
+        <div class="menu-item"><span class="name" data-i18n="item_dessert2">Μπουγάτσα με κρέμα</span><span class="dots"></span><span class="price">4,00€</span></div>
+        <div class="menu-item"><span class="name" data-i18n="item_dessert3">Ρυζόγαλο σπιτικό</span><span class="dots"></span><span class="price">3,80€</span></div>
+        <div class="menu-item"><span class="name" data-i18n="item_dessert4">Τσίπουρο / Ούζο<small>μισό κιλό</small></span><span class="dots"></span><span class="price">9,00€</span></div>
+        <div class="menu-item"><span class="name" data-i18n="item_dessert5">Κρασί χύμα<small>λευκό ή κόκκινο, ποτήρι</small></span><span class="dots"></span><span class="price">3,50€</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<svg class="wave-divider to-navy" viewBox="0 0 1200 60" preserveAspectRatio="none"><path d="M0,30 Q300,60 600,30 T1200,30 V60 H0 Z" fill="#0D2B2E"/></svg>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact">
+  <div class="wrap contact-grid">
+    <div class="reveal">
+      <span class="eyebrow" data-i18n="contact_eyebrow">Ελάτε από κοντά</span>
+      <h2 data-i18n="contact_title">Επικοινωνία</h2>
+
+      <div class="info-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12Z"/><circle cx="12" cy="9" r="2.4"/></svg>
+        <div><strong data-i18n="info_address_label">Διεύθυνση</strong><p data-i18n="info_address_value">Νίκης 45, 546 22 Θεσσαλονίκη</p></div>
+      </div>
+      <div class="info-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 5c0 8.3 6.7 15 15 15l3-4-6-3-2 2c-2-1-4-3-5-5l2-2-3-6Z"/></svg>
+        <div><strong data-i18n="info_phone_label">Τηλέφωνο</strong><p>2310 123 456</p></div>
+      </div>
+      <div class="info-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+        <div><strong data-i18n="info_hours_label">Ώρες λειτουργίας</strong><p data-i18n="info_hours_value">Δευτέρα – Κυριακή, 12:00 – 00:00</p></div>
+      </div>
+
+      <div class="map-box" role="img" data-i18n-aria="map_aria" aria-label="Χάρτης τοποθεσίας κοντά στον κόλπο του Θερμαϊκού">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M12 21s7-6.5 7-12a7 7 0 1 0-14 0c0 5.5 7 12 7 12Z"/><circle cx="12" cy="9" r="2.4"/></svg>
+        <span data-i18n="map_label">Νίκης 45 — δίπλα στην παραλιακή</span>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <span class="eyebrow" data-i18n="reserve_eyebrow">Κράτηση τραπεζιού</span>
+      <h2 style="font-size:1.9rem; margin-bottom:1.8rem;" data-i18n="reserve_title">Πείτε μας πότε έρχεστε</h2>
+      <form id="reserveForm">
+        <div class="form-row">
+          <div>
+            <label for="name" data-i18n="label_name">Ονοματεπώνυμο</label>
+            <input type="text" id="name" name="name" data-i18n-placeholder="placeholder_name" placeholder="π.χ. Μαρία Παπαδοπούλου" required>
+          </div>
+          <div>
+            <label for="phone" data-i18n="label_phone">Τηλέφωνο</label>
+            <input type="tel" id="phone" name="phone" data-i18n-placeholder="placeholder_phone" placeholder="69XX XXX XXX" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div>
+            <label for="date" data-i18n="label_date">Ημερομηνία</label>
+            <input type="date" id="date" name="date" required>
+          </div>
+          <div>
+            <label for="guests" data-i18n="label_guests">Άτομα</label>
+            <select id="guests" name="guests">
+              <option>1–2</option><option>3–4</option><option>5–6</option><option>7+</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label for="msg" data-i18n="label_msg">Σημείωση</label>
+          <textarea id="msg" name="msg" data-i18n-placeholder="placeholder_msg" placeholder="Κάτι που θα θέλατε να ξέρουμε πριν έρθετε;"></textarea>
+        </div>
+        <button type="submit" class="submit" data-i18n="submit_btn">Αποστολή αιτήματος</button>
+      </form>
+      <p id="formNote" style="margin-top:1rem; font-size:0.86rem; color:var(--cream-dim); display:none;" data-i18n="form_note">Ευχαριστούμε! Θα επικοινωνήσουμε μαζί σας σύντομα για επιβεβαίωση.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap"><span data-i18n="footer_text">© <span id="year"></span> Θερμαϊκός — Νίκης 45, Θεσσαλονίκη · Φτιαγμένο με <span style="color:var(--gold);">αγάπη για τη θάλασσα</span></span></div>
+</footer>
+
+<script>
+const translations = {
+  pageTitle: { el: `Θερμαϊκός — Εστιατόριο Θαλασσινών & Μεζέδων, Θεσσαλονίκη`, en: `Thermaikos — Seafood & Mezze Restaurant, Thessaloniki` },
+  burger_aria: { el: `Άνοιγμα μενού`, en: `Open menu` },
+  nav_home: { el: `Αρχική`, en: `Home` },
+  nav_history: { el: `Η Ιστορία`, en: `Our Story` },
+  nav_menu: { el: `Μενού`, en: `Menu` },
+  nav_contact: { el: `Επικοινωνία`, en: `Contact` },
+  hero_eyebrow: { el: `Θαλασσινά &amp; μεζέδες στον κόλπο`, en: `Seafood &amp; mezze by the gulf` },
+  hero_title: { el: `Γεύσεις που <em>κοιτάζουν</em><br>τη θάλασσα.`, en: `Flavors that <em>look out</em><br>to the sea.` },
+  hero_tag: { el: `Ένα τραπέζι στη Νίκης, ένα πιάτο από την αγορά του Καπάνι, μια ιστορία που κρατάει τρεις γενιές.`, en: `A table on Nikis Street, a dish from the Kapani market, a story spanning three generations.` },
+  meta_hours_label: { el: `Ώρες`, en: `Hours` },
+  meta_hours_value: { el: `Καθημερινά, 12:00–00:00`, en: `Daily, 12:00–00:00` },
+  meta_location_label: { el: `Τοποθεσία`, en: `Location` },
+  meta_location_value: { el: `Νίκης 45, Θεσσαλονίκη`, en: `45 Nikis St, Thessaloniki` },
+  meta_res_label: { el: `Κρατήσεις`, en: `Reservations` },
+  cta_reserve: { el: `Κάντε κράτηση`, en: `Reserve a table` },
+  history_eyebrow: { el: `Από το 1958`, en: `Since 1958` },
+  history_title: { el: `Η Ιστορία μας`, en: `Our Story` },
+  pull_quote: { el: `«Το μαγαζί δεν το χτίσαμε εμείς. Το κληρονομήσαμε από τη θάλασσα και το παραδίδουμε στα παιδιά μας.»`, en: `“We didn't build this place. We inherited it from the sea, and we're passing it on to our children.”` },
+  history_p1: { el: `Ο παππούς Μανώλης άνοιξε το πρώτο μαγαζί λίγα μέτρα από το λιμάνι, εκεί όπου οι ψαράδες έφερναν την πρωινή ψαριά κατευθείαν από τον Θερμαϊκό. Δεν υπήρχε μενού — υπήρχε ό,τι έβγαζε η θάλασσα εκείνη μέρα, και ό,τι κρατούσε η γειτονιά από τις παλιές συνήθειες: τις καπνιστές γεύσεις της αγοράς του Καπάνι, τα μπαχαρικά που είχαν φέρει οι πρόσφυγες της Μικρασίας, τις συνταγές που κυκλοφορούσαν ανάμεσα σε σεφαραδίτικες και ανατολίτικες κουζίνες σε αυτή την πολύγλωσση πόλη.`, en: `Grandfather Manolis opened the first shop just steps from the harbor, where fishermen brought in the morning catch straight from the Thermaikos Gulf. There was no menu — only what the sea gave up that day, and what the neighborhood carried from older habits: the smoky flavors of the Kapani market, the spices brought by refugees from Asia Minor, the recipes that passed between Sephardic and Ottoman kitchens in this many-tongued city.` },
+  history_p2: { el: `Στα χρόνια που ακολούθησαν, η ταβέρνα μεγάλωσε μαζί με τη Θεσσαλονίκη. Το τραπέζι μετακόμισε στη Νίκης, με θέα στον κόλπο και στο ηλιοβασίλεμα που κάνει την πόλη διάσημη, αλλά η λογική έμεινε η ίδια: λίγα υλικά, σωστά δουλεμένα, και πάντα ένα πιάτο μεζέδες στη μέση του τραπεζιού για να μοιραστεί.`, en: `In the years that followed, the taverna grew alongside Thessaloniki itself. The table moved to Nikis Street, with a view of the gulf and the sunset the city is famous for, but the logic stayed the same: a few ingredients, handled properly, and always one shared plate of mezze in the middle of the table.` },
+  history_p3: { el: `Σήμερα την κουζίνα κρατά η τρίτη γενιά της οικογένειας. Οι συνταγές έχουν ταξιδέψει, αλλά η αρχή παραμένει: το ψάρι έρχεται από ψαράδες που ξέρουμε με το όνομά τους, το λάδι από τη Χαλκιδική, και το ψωμί ζυμώνεται κάθε πρωί, λίγο πριν ανοίξουμε τις πόρτες στη θάλασσα.`, en: `Today the kitchen is in the hands of the family's third generation. The recipes have traveled, but the principle hasn't: the fish comes from fishermen we know by name, the oil from Halkidiki, and the bread is kneaded fresh every morning, just before we open our doors to the sea.` },
+  menu_eyebrow: { el: `Το τραπέζι`, en: `At the table` },
+  menu_title: { el: `Μενού`, en: `Menu` },
+  menu_intro: { el: `Ένα μενού που αλλάζει με την εποχή και την ψαριά της ημέρας — αυτά είναι τα πιάτα που θα βρείτε σχεδόν πάντα.`, en: `A menu that shifts with the season and the day's catch — these are the dishes you'll find on it almost always.` },
+  cat_meze: { el: `Μεζέδες`, en: `Mezze` },
+  cat_seafood: { el: `Θαλασσινά`, en: `Seafood` },
+  cat_main: { el: `Κυρίως πιάτα`, en: `Main dishes` },
+  cat_dessert: { el: `Επιδόρπια &amp; Ποτά`, en: `Desserts &amp; Drinks` },
+  item_meze1: { el: `Μελιτζανοσαλάτα ψητή`, en: `Roasted eggplant dip` },
+  item_meze2: { el: `Τυροκαυτερή Θεσσαλονίκης`, en: `Thessaloniki spicy feta dip` },
+  item_meze3: { el: `Ταραμοσαλάτα σπιτική`, en: `Homemade taramosalata` },
+  item_meze4: { el: `Κολοκυθοκεφτέδες<small>με σος γιαουρτιού</small>`, en: `Courgette fritters<small>with yogurt sauce</small>` },
+  item_meze5: { el: `Φέτα ψητή με μέλι &amp; σουσάμι`, en: `Baked feta with honey &amp; sesame` },
+  item_sea1: { el: `Μύδια Θερμαϊκού σαγανάκι`, en: `Thermaikos mussels saganaki` },
+  item_sea2: { el: `Χταπόδι σχάρας<small>με ξινόμηλο &amp; ρίγανη</small>`, en: `Grilled octopus<small>with vinegar &amp; oregano dressing</small>` },
+  item_sea3: { el: `Γαρίδες σαγανάκι`, en: `Shrimp saganaki` },
+  item_sea4: { el: `Καλαμαράκια τηγανητά`, en: `Fried calamari` },
+  item_sea5: { el: `Ψάρι ημέρας<small>ψητό, τιμή ανά κιλό</small>`, en: `Catch of the day<small>grilled, priced per kilo</small>` },
+  item_main1: { el: `Μπιφτέκι σχάρας<small>με πατάτες τηγανιτές</small>`, en: `Grilled beef patty<small>with fries</small>` },
+  item_main2: { el: `Κοντοσούβλι χοιρινό`, en: `Pork kontosouvli` },
+  item_main3: { el: `Παϊδάκια αρνίσια`, en: `Lamb chops` },
+  item_main4: { el: `Γιουβέτσι θαλασσινών`, en: `Seafood giouvetsi` },
+  item_dessert1: { el: `Τρίγωνα Πανοράματος`, en: `Panorama triangles` },
+  item_dessert2: { el: `Μπουγάτσα με κρέμα`, en: `Bougatsa with custard cream` },
+  item_dessert3: { el: `Ρυζόγαλο σπιτικό`, en: `Homemade rice pudding` },
+  item_dessert4: { el: `Τσίπουρο / Ούζο<small>μισό κιλό</small>`, en: `Tsipouro / Ouzo<small>half kilo</small>` },
+  item_dessert5: { el: `Κρασί χύμα<small>λευκό ή κόκκινο, ποτήρι</small>`, en: `House wine<small>white or red, glass</small>` },
+  contact_eyebrow: { el: `Ελάτε από κοντά`, en: `Come visit us` },
+  contact_title: { el: `Επικοινωνία`, en: `Contact` },
+  info_address_label: { el: `Διεύθυνση`, en: `Address` },
+  info_address_value: { el: `Νίκης 45, 546 22 Θεσσαλονίκη`, en: `45 Nikis St, 546 22 Thessaloniki, Greece` },
+  info_phone_label: { el: `Τηλέφωνο`, en: `Phone` },
+  info_hours_label: { el: `Ώρες λειτουργίας`, en: `Opening hours` },
+  info_hours_value: { el: `Δευτέρα – Κυριακή, 12:00 – 00:00`, en: `Monday – Sunday, 12:00 – 00:00` },
+  map_aria: { el: `Χάρτης τοποθεσίας κοντά στον κόλπο του Θερμαϊκού`, en: `Map showing the location near the Thermaikos gulf` },
+  map_label: { el: `Νίκης 45 — δίπλα στην παραλιακή`, en: `45 Nikis St — right on the seafront` },
+  reserve_eyebrow: { el: `Κράτηση τραπεζιού`, en: `Table reservation` },
+  reserve_title: { el: `Πείτε μας πότε έρχεστε`, en: `Let us know when you're coming` },
+  label_name: { el: `Ονοματεπώνυμο`, en: `Full name` },
+  placeholder_name: { el: `π.χ. Μαρία Παπαδοπούλου`, en: `e.g. Maria Papadopoulou` },
+  label_phone: { el: `Τηλέφωνο`, en: `Phone` },
+  placeholder_phone: { el: `69XX XXX XXX`, en: `+30 69XX XXX XXX` },
+  label_date: { el: `Ημερομηνία`, en: `Date` },
+  label_guests: { el: `Άτομα`, en: `Guests` },
+  label_msg: { el: `Σημείωση`, en: `Note` },
+  placeholder_msg: { el: `Κάτι που θα θέλατε να ξέρουμε πριν έρθετε;`, en: `Anything you'd like us to know before you arrive?` },
+  submit_btn: { el: `Αποστολή αιτήματος`, en: `Send request` },
+  form_note: { el: `Ευχαριστούμε! Θα επικοινωνήσουμε μαζί σας σύντομα για επιβεβαίωση.`, en: `Thank you! We'll be in touch shortly to confirm.` },
+  footer_text: { el: `© <span id="year"></span> Θερμαϊκός — Νίκης 45, Θεσσαλονίκη · Φτιαγμένο με <span style="color:var(--gold);">αγάπη για τη θάλασσα</span>`, en: `© <span id="year"></span> Thermaikos — 45 Nikis St, Thessaloniki · Made with <span style="color:var(--gold);">love for the sea</span>` }
+};
+
+let currentLang = 'el';
+
+function setLang(lang){
+  currentLang = lang;
+  document.documentElement.lang = lang;
+  if (translations.pageTitle[lang]) document.title = translations.pageTitle[lang];
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    if (translations[key]) el.innerHTML = translations[key][lang];
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
+    const key = el.dataset.i18nPlaceholder;
+    if (translations[key]) el.placeholder = translations[key][lang];
+  });
+  document.querySelectorAll('[data-i18n-aria]').forEach(el => {
+    const key = el.dataset.i18nAria;
+    if (translations[key]) el.setAttribute('aria-label', translations[key][lang]);
+  });
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+
+  const yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+}
+
+document.querySelectorAll('.lang-btn').forEach(btn => {
+  btn.addEventListener('click', () => setLang(btn.dataset.lang));
+});
+
+// Header solid on scroll
+const header = document.getElementById('siteHeader');
+window.addEventListener('scroll', () => {
+  header.classList.toggle('solid', window.scrollY > 40);
+});
+
+// Mobile nav
+const burger = document.getElementById('burger');
+const nav = document.getElementById('nav');
+burger.addEventListener('click', () => {
+  const open = nav.classList.toggle('open');
+  burger.setAttribute('aria-expanded', open);
+});
+nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  nav.classList.remove('open');
+  burger.setAttribute('aria-expanded', false);
+}));
+
+// Active link on scroll
+const sections = document.querySelectorAll('section, #top');
+const links = document.querySelectorAll('.nav-link');
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      links.forEach(l => l.classList.toggle('active', l.dataset.target === entry.target.id));
+    }
+  });
+}, { rootMargin: '-45% 0px -45% 0px' });
+sections.forEach(s => obs.observe(s));
+
+// Reveal on scroll
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('in');
+  });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+// Fake form submit
+document.getElementById('reserveForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  document.getElementById('formNote').style.display = 'block';
+  e.target.reset();
+});
+
+// Init
+setLang('el');
+</script>
+</body>
+</html>
